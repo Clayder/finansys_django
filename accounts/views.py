@@ -1,5 +1,5 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
 
 def get_account(request):
-    return HttpResponse()
+    return render(request, 'accounts/account_form.html')
