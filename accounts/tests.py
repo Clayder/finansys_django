@@ -12,3 +12,9 @@ class AccountTest(TestCase):
     def test_template(self):
         """Must use accounts/account_form.html"""
         self.assertTemplateUsed(self.resp, 'accounts/account_form.html')
+
+    def test_html(self):
+        """Html must contain input tags"""
+        self.assertContains(self.resp, '<form')
+        self.assertContains(self.resp, '<input', 5)
+        self.assertContains(self.resp, 'type="submit"')
