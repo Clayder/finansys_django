@@ -1,15 +1,18 @@
 FROM python:3.9
 
+RUN useradd -ms /bin/bash django
+
+USER django
+
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-WORKDIR /code
+WORKDIR /home/django/app
 
-COPY requirements.txt .
+ENV PATH $PATH:/home/django/.local/bin
+
+COPY requirements.txt /home/django/app
 
 RUN pip install -r requirements.txt
 
-RUN apt-get update
-RUN apt-get install vim -y
-
-COPY . .
+COPY . /home/django/app
