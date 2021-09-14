@@ -1,5 +1,8 @@
 from django.shortcuts import render
 
+from accounts.forms import SubscriptionForm
+
 
 def get_account(request):
-    return render(request, 'accounts/account_form.html')
+    context = {'form': SubscriptionForm()}
+    return render(request, 'accounts/account_form.html', context)

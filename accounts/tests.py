@@ -1,4 +1,5 @@
 from django.test import TestCase
+from accounts.forms import SubscriptionForm
 
 
 class AccountTest(TestCase):
@@ -16,5 +17,19 @@ class AccountTest(TestCase):
     def test_html(self):
         """Html must contain input tags"""
         self.assertContains(self.resp, '<form')
-        self.assertContains(self.resp, '<input', 5)
+        self.assertContains(self.resp, '<input', 6)
         self.assertContains(self.resp, 'type="submit"')
+
+    def test_csrf(self):
+        """Html must contain csrf"""
+        self.assertContains(self.resp, 'csrfmiddlewaretoken')
+
+    def test_has_form(self):
+        """Context must have subscription form """
+        form = self.resp.context['form']
+        self.assertIsInstance(form, SubscriptionForm)
+
+    def test_form_has_fields(self):
+        """Form must have 4 fields"""
+        form = self.resp.context['form']
+        self.assertSequenceEqual(['name', 'balance', 'bank', 'due_day', 'closing_day'], list(form.fields))

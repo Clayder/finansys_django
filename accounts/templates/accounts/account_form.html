@@ -131,33 +131,38 @@
                     <div class="card card-solid">
                         <div class="card-body">
                             <form action="." method="POST">
+                                {% csrf_token %}
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Nome</label>
-                                            <input type="text" class="form-control" id="name" name="name">
+                                            <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+                                            {{ form.name.errors }}
+                                            {{ form.name }}
                                         </div>
                                         <!-- /.form-group -->
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Limite</label>
-                                            <input type="text" class="form-control" id="balance" name="balance">
+                                            <label for="{{ form.balance.id_for_label }}">{{ form.balance.label }}</label>
+                                            {{ form.balance.errors }}
+                                            {{ form.balance }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Banco</label>
-                                            <input type="number" class="form-control" id="bank" name="bank">
+                                            <label for="{{ form.bank.id_for_label }}">{{ form.bank.label }}</label>
+                                            {{ form.bank.errors }}
+                                            {{ form.bank }}
                                         </div>
                                         <!-- /.form-group -->
                                     </div>
                                     <!-- /.col -->
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Dia de vencimento</label>
-                                            <input type="number" class="form-control" id="due_day" name="due_day">
+                                            <label for="{{ form.due_day.id_for_label }}">{{ form.due_day.label }}</label>
+                                            {{ form.due_day.errors }}
+                                            {{ form.due_day }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Dia de fechamento</label>
-                                            <input type="number" class="form-control" id="closing_day"
-                                                   name="closing_day">
+                                             <label for="{{ form.closing_day.id_for_label }}">{{ form.closing_day.label }}</label>
+                                            {{ form.closing_day.errors }}
+                                            {{ form.closing_day }}
                                         </div>
                                         <!-- /.form-group -->
                                         <div class="form-group">
